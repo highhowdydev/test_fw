@@ -1,0 +1,4 @@
+resources/
+package.json
+pnpm-lock.json
+.prettierrc

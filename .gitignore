@@ -1,0 +1,13 @@
+node_modules
+.env
+server.cfg
+assets
+/resources/\[assets\]/*
+cache/
+/cache/
+polyzone_created_zones.txt
+resources/.vscode/
+log.txt
+artifacts/
+/resources/\[build\]/*
+pnpm-lock.yaml

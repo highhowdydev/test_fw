@@ -1,0 +1,47 @@
+{
+  "name": "evh-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "cross-env dev=0 node ./scripts/build.js",
+    "asset:link": "node ./scripts/tasks/link.js",
+    "generate:config": "node ./scripts/tasks/generate_config.js",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0",
+    "npm": "Please use PNPM instead of NPM to install dependencies",
+    "yarn": "Please use PNPM instead of yarn to install dependencies"
+  },
+  "devDependencies": {
+    "@citizenfx/client": "2.0.10748-1",
+    "@citizenfx/server": "2.0.10748-1",
+    "@eslint/js": "^9.13.0",
+    "@types/node": "^22.8.6",
+    "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.24.0",
+    "esbuild-plugin-fileloc": "^0.0.6",
+    "eslint": "^9.13.0",
+    "glob": "^11.0.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "prettier": "3.3.3",
+    "prisma": "^5.21.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ora": "^8.1.0"
+  }
+}
