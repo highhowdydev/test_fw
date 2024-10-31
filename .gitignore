@@ -6,7 +6,6 @@ assets
 cache/
 /cache/
 polyzone_created_zones.txt
-resources/.vscode/
 log.txt
 artifacts/
 /resources/\[build\]/*
