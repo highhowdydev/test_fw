@@ -1,3 +1,1 @@
-console.log('Hello Eleventh Hour (Client)!');
-
-const hello = true;
+console.log('Hello Eleventh Hour (Client)! nerddd');

@@ -26,7 +26,7 @@ export async function buildResource(resource, spinner, dev) {
 }
 
 // Builds a specific entry point (server or client)
-function buildEntry(resource, dev, entryType, targetFormat) {
+async function buildEntry(resource, dev, entryType, targetFormat) {
     const indexPath = sanitizePath(path.join(resource, `${entryType}/index.ts`));
     const targetPath = sanitizePath(
         path.join(
@@ -47,7 +47,13 @@ function buildEntry(resource, dev, entryType, targetFormat) {
         plugins: [plugin.filelocPlugin()],
     };
 
-    return dev ? esbuild.context(esbuildOpts).watch() : esbuild.build(esbuildOpts);
+    if (dev) {
+        const ctx = await esbuild.context(esbuildOpts);
+        ctx.watch();
+        return;
+    }
+
+    await esbuild.build();
 }
 
 // Copies static files from the source directory to the output directory
