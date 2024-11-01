@@ -1,4 +1,4 @@
 type ExampleType = {
-    banErp: boolean;
-    erpIsWrong: boolean;
+	banErp: boolean;
+	erpIsWrong: boolean;
 };

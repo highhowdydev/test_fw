@@ -1,3 +1,3 @@
 export class Logger {
-    // TODO: Implement logger
+	// TODO: Implement logger
 }

@@ -1,7 +1,7 @@
 import Fivem from "./events/fivem";
 
 const Events = {
-    Fivem,
+	Fivem,
 } as const;
 
 export default Events;
