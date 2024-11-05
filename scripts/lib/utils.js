@@ -61,4 +61,16 @@ function writeFile(path, data) {
     fs.writeFileSync(path, data);
 }
 
+/**
+ * Gets either a string splits with a separator or an array of strings.
+ * @param {string} str - The string to split.
+ */
+export function splitString(str) {
+    if (!str) return [];
+    if (str.includes(',')) {
+        return str.split(',');
+    }
+    return str.split(' ');
+}
+
 export {globSync, copySync, writeFile, sanitizePath, ensureDirectoryExists};

@@ -34,6 +34,11 @@ export async function waitFor<T>(cb: () => T, errMessage?: string, timeout?: num
 	return p;
 }
 
+export const ValidNumber = (num: any) => {
+	if (num != undefined && /^(-?\d+(?:\.\d+)?)$/.test(num.toString())) return true;
+	return false;
+ };
+
 // Arrays
 export const UniqueArray = <T>(arr: T[]) => [...new Set(arr)];
 export const ShuffleArray = <T>(arr: T[]) => arr.sort(() => Math.random() - 0.5);

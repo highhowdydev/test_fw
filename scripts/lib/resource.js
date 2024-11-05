@@ -4,9 +4,11 @@ import fs from "node:fs";
 import plugin from "esbuild-plugin-fileloc";
 import esbuild from "esbuild";
 import { globSync, sanitizePath, copySync } from "./utils.js";
+import { escape } from "node:querystring";
 
 // Builds a resource, including its server and client components
 export async function buildResource(resource, spinner, dev) {
+	console.log(dev);
 	try {
 		spinner.text = `Building ${path.basename(resource)}`;
 
@@ -28,7 +30,7 @@ export async function buildResource(resource, spinner, dev) {
 async function buildEntry(resource, dev, entryType, targetFormat) {
 	const indexPath = sanitizePath(path.join(resource, `${entryType}/index.ts`));
 	const targetPath = sanitizePath(
-		path.join(resource.replace(CONFIG.SOURCE_DIR, CONFIG.OUTPUT_DIR), `${entryType}/index.`),
+		path.join(resource.replace(CONFIG.SOURCE_DIR, CONFIG.OUTPUT_DIR), `${entryType}/index.js`),
 	);
 
 	const esbuildOpts = {
@@ -80,11 +82,34 @@ export function isResourceDisabled(resourcePath) {
 	return false;
 }
 
+function getResourceName(resource) {
+	return resource.split("/").pop();
+}
+
+function isResourceCategory(directory) {
+	return !fs.existsSync(path.join(directory, "fxmanifest.lua"));
+}
+
 // Fetches a list of enabled resources from the source directory
-export function fetchResources() {
-	return globSync(path.join(CONFIG.SOURCE_DIR, "*"), {
+export function fetchResources(resources, currentDir = CONFIG.SOURCE_DIR) {
+	console.log(`Fetching resources from ${currentDir}`);
+
+	const foundResources = globSync(path.join(currentDir, "*"), {
 		onlyDirectories: true,
 	}).filter(resource => {
+		if (resources.length && !resources.includes(getResourceName(resource)) && !isResourceCategory(resource)) return false;
 		return !isResourceDisabled(resource);
 	});
+
+	const recursiveResources = [];
+
+	for (const resource of foundResources) {
+		if (!isResourceCategory(resource) && !isResourceDisabled(resource)) continue;
+		recursiveResources.push(...fetchResources(resources, resource));
+		foundResources.splice(foundResources.indexOf(resource), 1);
+	}
+
+	const resourcesToBuild = [...foundResources, ...recursiveResources];
+
+	return resourcesToBuild;
 }
