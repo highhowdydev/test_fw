@@ -1,10 +1,11 @@
 {
   "name": "evh-framework",
   "version": "1.0.0",
-  "description": "",
+  "description": "erp is cringe",
   "main": "index.js",
   "type": "module",
   "private": true,
+  "engineStrict": true,
   "scripts": {
     "build": "cross-env dev=0 node ./scripts/build.js",
     "ui:dev": "cross-env NODE_ENV=development vite ./ui --clearScreen=false --host=localhost --port=3000",
@@ -21,7 +22,8 @@
     "node": ">=18.0.0",
     "pnpm": ">=9.0.0",
     "npm": "Please use PNPM instead of NPM to install dependencies",
-    "yarn": "Please use PNPM instead of yarn to install dependencies"
+    "yarn": "Please use PNPM instead of yarn to install dependencies",
+    "bun": "Please use PNPM instead of bun to install dependencies"
   },
   "devDependencies": {
     "@citizenfx/client": "2.0.10748-1",
@@ -43,7 +45,6 @@
     "postcss-simple-vars": "^7.0.1",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "prisma": "^5.21.1",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.12.2",
@@ -52,7 +53,6 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
-    "@prisma/client": "^5.21.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
