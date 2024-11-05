@@ -12,7 +12,7 @@
     "ui:build": "cross-env NODE_ENV=production vite build ./ui && pnpm build",
     "ui:preview": "vite preview ./ui",
     "asset:link": "node ./scripts/tasks/link.js",
-    "genconfig": "node ./scripts/tasks/generate_config.js",
+    "gen:config": "node ./scripts/tasks/generate_config.js",
     "lint": "eslint src/**/*.ts"
   },
   "keywords": [],
