@@ -8,7 +8,6 @@ import { escape } from "node:querystring";
 
 // Builds a resource, including its server and client components
 export async function buildResource(resource, spinner, dev) {
-	console.log(dev);
 	try {
 		spinner.text = `Building ${path.basename(resource)}`;
 
@@ -92,8 +91,6 @@ function isResourceCategory(directory) {
 
 // Fetches a list of enabled resources from the source directory
 export function fetchResources(resources, currentDir = CONFIG.SOURCE_DIR) {
-	console.log(`Fetching resources from ${currentDir}`);
-
 	const foundResources = globSync(path.join(currentDir, "*"), {
 		onlyDirectories: true,
 	}).filter(resource => {

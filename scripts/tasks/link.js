@@ -17,7 +17,6 @@ async function configureAssetLinks() {
 
         for (const asset of CONFIG.ASSETS) {
             const dir = sanitizePath(path.join(CONFIG.ASSETS_DIR, asset.dir));
-            console.log(dir);
             if (!fs.existsSync(dir)) continue;
 
             const targetDir = sanitizePath(path.join(outputDir, asset.targetDir));
